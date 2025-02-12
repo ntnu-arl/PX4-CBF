@@ -29,7 +29,13 @@ Those messages include:
 * List of 3D point of obstacles, split in chunks to cope for the mavlink maximum message size limitations.
 * CBF debug message, exposing useful information for users through PX4 logs and ROS.
 
-*TODO links to forks + explainations*
+The mavlink fork is included as submodule in our [modified PX4 fork](https://github.com/ntnu-arl/PX4-Autopilot/tree/cbf).
+
+Additionally, users need to clone and install (though catkin) the corresponding mavlink and mavros version in their ROS workspaces:
+* https://github.com/ntnu-arl/mavlink/tree/dev/px4-v1.15.3/cbf
+* https://github.com/ntnu-arl/mavros/tree/dev/voxl/cbf
+
+> Note: because the VOXL SDK works with previous releases of mavlink, we also based our modification from the proper version on [this branch](https://github.com/ntnu-arl/mavlink/tree/dev/voxl/cbf).
 
 ### Pointcloud downsampling
 
