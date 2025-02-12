@@ -48,7 +48,8 @@ The module can be installed normally through Catkin.
 
 ## Build / Install Instructions for Standard PX4 Flight Controllers
 
-As the safety filter is implemented as part of the PX4 position controller, no additional changes are necessary aside from building and flashing the firmware (following instruction [here](https://docs.px4.io/main/en/dev_setup/building_px4.html)). Certain flight controllers may return memory errors due to the QP library used, these are simple solved by disabling unnecessary components.
+As the safety filter is implemented as part of the PX4 position controller, no additional changes are necessary aside from building and flashing the firmware (following instruction [here](https://docs.px4.io/main/en/dev_setup/building_px4.html)).
+Certain flight controllers may return memory errors due to the QP library used, these are simple solved by disabling unnecessary components in `<PX4-firmware_repo/boards/<specific_board>/default.px4board`.
 
 ## Build for ModalAI VOXL SDK
 
