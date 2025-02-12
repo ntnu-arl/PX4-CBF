@@ -8,9 +8,53 @@ The safety filter is integrated into the PX4 position/velocity control loop and 
 
 ## Dependencies
 
+Our method requires modified versions of [mavlink](https://github.com/mavlink/mavlink) and [mavros](https://github.com/mavlink/mavros), that implements the relevant ROS and uORB messages.
+Those messages include: 
+* List of 3D point of obstacles, split in chunks to cope for the mavlink maximum message size limitations.
+* CBF debug message, exposing useful information for users through PX4 logs and ROS.
+
+**TODO links to forks + explainations**
+
+Additionally, we propose a Python [ROS1 module](https://github.com/ntnu-arl/cbf_pc_selector) for downsampling pointclouds, and selecting the N closest points to be sent to PX4.
+The downsampling is achieved by selecting the minrange in a given number of angular bins.
+The module can be installed normally through Catkin.
+
 ## Build / Install Instructions
 
-## Build for Modalai voxl SDK
+## Build for ModalAI VOXL SDK
+
+### Why a second fork
+
+We also propose a realization of our implementation for the ModalAI VOXL SDK.
+Our [public fork](https://github.com/ntnu-arl/voxl-px4/tree/cbf) of the [VOXL SDK](https://gitlab.com/voxl-public/voxl-sdk/services/voxl-px4) is based on the [SDF 1.2.0 release](https://gitlab.com/voxl-public/voxl-sdk/services/voxl-px4/-/tags/sdk-1.2.0).
+We note that our fork contains no modification to the VOXL SDK itself, but change the px4-firmware submodule to [our modified PX4 implementation](https://github.com/ntnu-arl/modalai-px4-firmware), based on the older release used by VOXL.
+
+### VOXL-speficic build instructions
+
+This instructions hereafter are taken from the voxl-px4 repo.
+
+* Setup ADB on the host computer: [https://docs.modalai.com/setting-up-adb/](https://docs.modalai.com/setting-up-adb/)
+* Clone the repository
+```
+git clone git@github.com:ntnu-arl/voxl-px4.git
+cd voxl-px4
+git checkout cbf
+git submodule update --init --recursive
+```
+* Launch the docker and build
+```
+./run-docker.sh
+./clean.sh
+./build.sh
+```
+* Package the firmware
+```
+./make_package.sh
+```
+* Install the package on the board (through ADB)
+```
+px4-firmware/boards/modalai/voxl2/scripts/install-voxl.sh
+```
 
 ## Reference, Acknowledgments
 
@@ -28,7 +72,7 @@ If you use this work in your research, please cite the following publication:
 
 The embedded implementation work is currently under review.
 
-We would like to acknowledge the participation of [Morten Nissov](https://github.com/mnissov) and [Nazar Misyats](https://github.com/Krafpy) to the proposed implementation.
+We would like to acknowledge the participation of [Morten Nissov](https://github.com/mnissov) and [Nazar Misyats](https://github.com/Krafpy) to the proposed work.
 
 ## Contacts
 
