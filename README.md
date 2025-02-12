@@ -6,10 +6,17 @@ This repository presents the instructions to use the embedded CBF-based safety f
 The filter operates using real-time onboard range measurements and velocity estimation.
 It is integrated into the PX4 position/velocity control loop and makes optimally minimal modifications to the acceleration setpoint to prevent collisions.
 
-The safety filter is compatible with various range and depth sensors mounted on the multirotor, including, e.g., Intel RealSense D455 and alike, small-scale Time-of-Flight sensors, and 360° LiDARs.
+The safety filter is compatible with various range and depth sensors mounted on the multirotor, including, e.g., Intel RealSense D455 and alike, small-scale Time-of-Flight sensors, or LiDARs.
 
 When using a laterally constrained-FoV sensor, additional motion constraints can be applied within the CBF to restrict movement outside the sensor's FoV.
-Note: this means, however, that the underlying CBF-QP lacks an analytical solution, necessitating the use of a solver. Additional computational resources will therefore be required on the controller board.
+Note: The unconstrained-FoV case relies on computing an analytical solution to the underlying CBF-QP, which is computationally efficient.
+However, the constrained-FoV case requires additional computational resources on the controller board.
+
+![Overview of the modified PX4 control cascade](resources/architecture.png)
+
+## Tested Hardware
+
+The proposed CBF safety filter was successfully compiled and tested on [PixRacer Pro](https://mrobotics.io/docs/pixracer-pro/) and [VOXL2 Mini](https://www.modalai.com/products/voxl-2-mini) Flight Controllers.
 
 ## Dependencies
 
@@ -121,7 +128,7 @@ If you use this work in your research, please cite the following publication:
 
 The embedded implementation work is currently under review.
 
-We would like to acknowledge the participation of [Morten Nissov](https://github.com/mnissov) and [Nazar Misyats](https://github.com/Krafpy) to the proposed work.
+We would like to acknowledge the contribution of [Morten Nissov](https://github.com/mnissov) and [Nazar Misyats](https://github.com/Krafpy) to the proposed embedded implementation.
 
 ## Contacts
 
