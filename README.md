@@ -16,9 +16,7 @@ Note: this means, however, that the underlying CBF-QP lacks an analytical soluti
 ### QP solver
 
 As the safety filter relies on solving a minimization problem, the use of a solver is required (when FoV constrains are engaged).
-We use a fork of [qpOASES](https://github.com/ntnu-arl/qpOASES).
-
-*TODO explain why fork, mention dynamic memory allocation issues*
+We use a fork of [qpOASES](https://github.com/ntnu-arl/qpOASES) in which we removed some includes that are not usable on some standard PX4 Boards which prevent dynamic memory allocation.
 
 > Note: The qpOASES implementation is currently not working on the PixRacer Pro board and leads to firmware crashes. We are currently investigating this issue.
 
