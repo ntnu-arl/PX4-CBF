@@ -4,12 +4,12 @@
 
 This repository presents the instructions to use the embedded CBF-based safety filter for collision avoidance, designed for integration into the PX4 Autopilot.
 It relies on online onboard range measurements and velocity estimation.
-The safety filter is integrated into the PX4 position/velocity control loop and minimally modifies the acceleration setpoint to prevent collisions. 
+The safety filter is integrated into the PX4 position/velocity control loop and minimally modifies the acceleration setpoint to prevent collisions.
 
 ## Dependencies
 
 Our method requires modified versions of [mavlink](https://github.com/mavlink/mavlink) and [mavros](https://github.com/mavlink/mavros), that implements the relevant ROS and uORB messages.
-Those messages include: 
+Those messages include:
 * List of 3D point of obstacles, split in chunks to cope for the mavlink maximum message size limitations.
 * CBF debug message, exposing useful information for users through PX4 logs and ROS.
 
@@ -58,8 +58,9 @@ px4-firmware/boards/modalai/voxl2/scripts/install-voxl.sh
 
 ## CBF parameters
 
-**TODO screenshot of QGC**
-Our PX4 implementation exposes tunable parameters that can be checked accessed through [QGC](https://qgroundcontrol.com/).
+Our PX4 implementation exposes tunable parameters that can be accessed through [QGC](https://qgroundcontrol.com/).
+
+![Image of exposed parameters in QGC](resources/qgc_params.jpg)
 
 The **CBF_ENABLE** flag allows user to engage or not the CBF safety filter.
 If set to false, the position/velocity control loop will act exactly as in the vanilla PX4 implementation.
