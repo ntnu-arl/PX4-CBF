@@ -2,13 +2,17 @@
 
 ## Safety Filter Overview
 
+This repository presents the instructions to use the embedded CBF-based safety filter for collision avoidance, designed for integration into the PX4 Autopilot.
+It relies on online onboard range measurements and velocity estimation.
+The safety filter is integrated into the PX4 position/velocity control loop and minimally modifies the acceleration setpoint to prevent collisions. 
+
 ## Dependencies
 
 ## Build / Install Instructions
 
 ## Build for Modalai voxl SDK
 
-## References, Acknowledgments
+## Reference, Acknowledgments
 
 If you use this work in your research, please cite the following publication:
 
@@ -25,7 +29,6 @@ If you use this work in your research, please cite the following publication:
 The embedded implementation work is currently under review.
 
 We would like to acknowledge the participation of [Morten Nissov](https://github.com/mnissov) and [Nazar Misyats](https://github.com/Krafpy) to the proposed implementation.
-
 
 ## Contacts
 
