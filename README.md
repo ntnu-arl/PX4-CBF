@@ -56,6 +56,26 @@ git submodule update --init --recursive
 px4-firmware/boards/modalai/voxl2/scripts/install-voxl.sh
 ```
 
+## CBF parameters
+
+**TODO screenshot of QGC**
+Our PX4 implementation exposes tunable parameters that can be checked accessed through [QGC](https://qgroundcontrol.com/).
+
+The **CBF_ENABLE** flag allows user to engage or not the CBF safety filter.
+If set to false, the position/velocity control loop will act exactly as in the vanilla PX4 implementation.
+
+The most critical parameters that user may need to tune are presented in this table, along with a summary of their effect on the filter behavior.
+
+| Parameter       | Range     | Effect when increasing      |
+| --------------- | --------- | --------------------------- |
+| CBF_EPSILON     | >0        | Larger avoidance radius     |
+| CBF_KAPPA       | [10, 100] | Less smooth approximation   |
+| CBF_GAMMA       | [10, 100] | Reacts to farther obstacles |
+| CBF_ALPHA       | [1, 3]    | Increase filter sensitivity |
+| CBF_POLE0       | [-3, -1]  | Damped response             |
+| CBF_LP_GAIN_OUT | [0, 1]    | Stronger accel smoothing    |
+| CBF_ALPHA_FOV   | [2, 8]    | Aggressive FoV response     |
+
 ## Reference, Acknowledgments
 
 If you use this work in your research, please cite the following publication:
