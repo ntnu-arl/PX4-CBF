@@ -141,6 +141,7 @@ We would like to acknowledge the contribution of [Morten Nissov](https://github.
 ## Contacts
 
 * [Marvin Harms](mailto:marvin.c.harms@ntnu.no)
+* [Nazar Misyats](mailto:nazar.misyats@ens-rennes.fr)
 * [Morten Nissov](mailto:morten.nissov@ntnu.no)
 * [Martin Jacquet](mailto:marvin.jacquet@ntnu.no)
 * [Kostas Alexis](mailto:konstantinos.alexis@ntnu.no)
