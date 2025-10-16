@@ -14,6 +14,8 @@ However, the constrained-FoV case requires additional computational resources on
 
 ![Overview of the modified PX4 control cascade](resources/architecture.png)
 
+We also propose a [ROS implementation of the CBF](https://github.com/ntnu-arl/composite_cbf).
+
 ## Tested Hardware
 
 The proposed CBF safety filter was successfully compiled and tested on [PixRacer Pro](https://mrobotics.io/docs/pixracer-pro/) and [VOXL2 Mini](https://www.modalai.com/products/voxl-2-mini) Flight Controllers.
@@ -47,7 +49,7 @@ Additionally, users need to clone and install (though catkin) the corresponding 
 The safety filter is scalable wrt the number of obstacles consired as the avoidance problem is lumped into a single constraint.
 Using the whole pointcloud is however redundant and implies a large computation overhead for computing the composite CBF.
 
-We propose a Python [ROS1 module](https://github.com/ntnu-arl/cbf_pc_selector) for downsampling pointclouds, and selecting the N closest points to be sent to PX4.
+We propose a Python [ROS1 module](https://github.com/ntnu-arl/cbf_pc_selector/tree/legacy/python_node) for downsampling pointclouds, and selecting the N closest points to be sent to PX4.
 The downsampling is achieved by selecting the minrange in a given number of angular bins.
 The module can be installed normally through Catkin.
 
@@ -120,23 +122,32 @@ The most critical parameters that user may need to tune are presented in this ta
 | CBF_LP_GAIN_OUT | [0, 1]    | Lesser accel. smoothing      |
 | CBF_ALPHA_FOV   | [2, 8]    | More aggressive FoV response |
 
-## Reference, Acknowledgments
+## Cite
 
 If you use this work in your research, please cite the following publication:
 
 ```
-@INPROCEEDINGS{Harms2025Safe,
+@INPROCEEDINGS{harms2025safe,
   AUTHOR={Marvin Harms and Martin Jacquet and Kostas Alexis},
   TITLE={Safe Quadrotor Navigation using Composite Control Barrier Functions},
-  BOOKTITLE={IEEE International Conference on Robotics and Automation (ICRA)},
+  BOOKTITLE={2025 IEEE International Conference on Robotics and Automation (ICRA)},
   YEAR={2025},
   URL={https://arxiv.org/abs/2502.04101},
 }
 ```
 
-The embedded implementation work is currently under review.
+or, if you use our embedded implementation, please cite:
 
-We would like to acknowledge the contribution of [Morten Nissov](https://github.com/mnissov) and [Nazar Misyats](https://github.com/Krafpy) to the proposed embedded implementation.
+```
+@INPROCEEDINGS{misyats2025embedded,
+  AUTHOR={Misyats, Nazar and Harms, Marvin and Nissov, Morten and Jacquet, Martin and Alexis, Kostas},
+  TITLE={Embedded Safe Reactive Navigation for Multirotors Systems using Control Barrier Functions},
+  BOOKTITLE={2025 International Conference on Unmanned Aircraft Systems (ICUAS)},
+  pages={697--704},
+  YEAR={2025},
+  URL={https://arxiv.org/abs/2504.15850},
+}
+```
 
 ## Acknowledgements
 
