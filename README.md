@@ -138,6 +138,10 @@ The embedded implementation work is currently under review.
 
 We would like to acknowledge the contribution of [Morten Nissov](https://github.com/mnissov) and [Nazar Misyats](https://github.com/Krafpy) to the proposed embedded implementation.
 
+## Acknowledgements
+
+This work was supported by the European Commission Horizon Europe grants DIGIFOREST (EC 101070405) and SPEAR (EC 101119774).
+
 ## Contacts
 
 * [Marvin Harms](mailto:marvin.c.harms@ntnu.no)
